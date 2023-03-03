@@ -13,9 +13,9 @@ Selenium >= 3.141.0, chromedriver are made sure for installed.
 Store your email and password for Facebook login (or your cookie for Facebook login with cookie) in 'setup.txt'.
 
 ## To use this tool
-Running 'fblogin.py' to start collecting data
+Running `fblogin.py` to start collecting data
 
-'''
+```
 usage: facebook_crawl_post/fblogin.py [-h] [--pages PAGES [PAGES ...]] [-d DEPTH]
 Data Collection
 arguments:
@@ -27,8 +27,12 @@ arguments:
   -d DEPTH, --depth DEPTH
                         How many recent posts you want to gather in
                         multiples of (roughly) 8.
-'''
+```
 
-Example: 'python fblogin.py --pages page1 page2 -d 20'
+Example: `python fblogin.py --pages page1 page2 -d 20`
                         
-Finnaly, you can running 'check_duplicate.py' to find out the duplicate posts ware scraped
+Finnaly, you can running `check_duplicate.py` to find out the duplicate posts ware scraped
+____
+The output will be saving in both `*.csv` and `*.txt` format.
+
+You can find them in folder facebook_crawl_post/data (this folder will be created after running code in the first time)
