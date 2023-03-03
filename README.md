@@ -16,7 +16,7 @@ Store your email and password for Facebook login (or your cookie for Facebook lo
 Running `fblogin.py` to start collecting data
 
 ```
-usage: facebook_crawl_post/fblogin.py [-h] [--pages PAGES [PAGES ...]] [-d DEPTH]
+usage: Facebook_Crawling_Post/fblogin.py [-h] [--pages PAGES [PAGES ...]] [-d DEPTH]
 
 arguments:
   -h, --help            show this help message and exit
@@ -35,4 +35,4 @@ Finnaly, you can running `check_duplicate.py` to find out the duplicate posts wa
 ____
 The output will be saving in both `*.csv` and `*.txt` format.
 
-You can find them in folder facebook_crawl_post/data (this folder will be created after running code in the first time)
+You can find them in folder Facebook_Crawling_Post/data (this folder will be created after running code in the first time)
