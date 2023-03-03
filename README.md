@@ -17,7 +17,7 @@ Running `fblogin.py` to start collecting data
 
 ```
 usage: facebook_crawl_post/fblogin.py [-h] [--pages PAGES [PAGES ...]] [-d DEPTH]
-Data Collection
+
 arguments:
   -h, --help            show this help message and exit
   -p, --pages PAGES [PAGES ...]
@@ -29,7 +29,7 @@ arguments:
                         multiples of (roughly) 8.
 ```
 
-Example: `python fblogin.py --pages page1 page2 -d 20`
+Example: `python fblogin.py -p page1 page2 -d 20`
                         
 Finnaly, you can running `check_duplicate.py` to find out the duplicate posts ware scraped
 ____
