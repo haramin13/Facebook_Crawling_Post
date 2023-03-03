@@ -1,16 +1,20 @@
 # Facebook_Crawling_Post
 
 ## About this tool
-A tool for scraped posts from pages on facebook
+This tool will help you auto collect posts from pages on facebook
+
 This tool was write base on **facebook-scraper-selenium** of author **apurvmishra99**
+
 You can find source code [in here](https://github.com/apurvmishra99/facebook-scraper-selenium).
 
 ## Requirement
 Selenium >= 3.141.0, chromedriver are made sure for installed.
+
 Store your email and password for Facebook login (or your cookie for Facebook login with cookie) in 'setup.txt'.
 
 ## To use this tool
 Running 'fblogin.py' to start collecting data
+
 '''
 usage: facebook_crawl_post/fblogin.py [-h] [--pages PAGES [PAGES ...]] [-d DEPTH]
 Data Collection
