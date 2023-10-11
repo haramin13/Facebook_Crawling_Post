@@ -13,7 +13,7 @@ import datetime
 import utils
 import random
 
-CHROMEDRIVER_PATH = '/usr/bin/chromedriver'
+CHROMEDRIVER_PATH = 'chromedriver.exe'
 
 class CollectPosts():
     """Collector of recent FaceBook posts.
@@ -29,8 +29,35 @@ class CollectPosts():
         self.out_file = file
         self.depth = depth + 1
         self.delay = delay
+        chrome_options = Options()
         # browser instance
-        self.browser = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH)
+        # chrome_options.add_argument("--window-size=%s" % WINDOW_SIZE)
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('disable-infobars')
+        chrome_options.add_argument('--disable-gpu') if os.name == 'nt' else None  # Windows workaround
+        chrome_options.add_argument("--verbose")
+        chrome_options.add_argument("--no-default-browser-check")
+        chrome_options.add_argument("--ignore-ssl-errors")
+        chrome_options.add_argument("--allow-running-insecure-content")
+        chrome_options.add_argument("--disable-web-security")
+        chrome_options.add_argument("--disable-feature=IsolateOrigins,site-per-process")
+        chrome_options.add_argument("--no-first-run")
+        chrome_options.add_argument("--disable-notifications")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--disable-translate")
+        chrome_options.add_argument("--ignore-certificate-error-spki-list")
+        chrome_options.add_argument("--ignore-certificate-errors")
+        chrome_options.add_argument("--disable-blink-features=AutomationControllered")
+        chrome_options.add_experimental_option('useAutomationExtension', False)
+        prefs = {"profile.default_content_setting_values.notifications": 2}
+        chrome_options.add_experimental_option("prefs", prefs)
+        chrome_options.add_argument("--start-maximized")  # open Browser in maximized mode
+        chrome_options.add_argument("--disable-dev-shm-usage")  # overcome limited resource problems
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        chrome_options.add_experimental_option("prefs", {"profile.managed_default_content_settings.images": 2})
+        chrome_options.add_argument('disable-infobars')
+        self.browser = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, options=chrome_options)
+        # self.browser = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH)
 
     def collect_page(self, page):
         t_start = datetime.datetime.now()
@@ -93,6 +120,7 @@ class CollectPosts():
                 # Creating post text entry
                 status = utils.strip(post)
                 analysis.append(status)
+                # print(post)
 
                 # Write row to csv
                 utils.write_to_csv(page, analysis)
